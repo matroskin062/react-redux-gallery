@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPhotos, loadMore } from '../../ducks/photos';
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 import PhotosList from '../PhotosList/PhotosList';
-import Spinner from '../Spinner/Spinner';
-import styles from './Photos.module.css';
+import SkeletonThumbnail from '../Skeleton/SkeletonThumbnail/SkeletonThumbnail';
 import photosSelector from './Photos.selector';
 
 const PhotosPage = () => {
@@ -23,7 +22,7 @@ const PhotosPage = () => {
 
   return (
     <div>
-      {isLoading && <Spinner />}
+      {isLoading && <SkeletonThumbnail />}
       {!isLoading && photos && (
         <>
           <PhotosList photos={photos} />

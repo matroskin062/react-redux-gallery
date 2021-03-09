@@ -1,0 +1,12 @@
+.Card {
+  width: 200px;
+  padding: 0;
+}
+
+.Container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, max-content));
+  justify-content: center;
+  column-gap: 30px;
+  row-gap: 20px;
+}

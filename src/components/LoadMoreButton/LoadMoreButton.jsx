@@ -1,12 +1,13 @@
+import { Button, Row } from 'antd';
 import React from 'react';
-
-import styles from './LoadMoreButton.module.css';
 
 const LoadMoreButton = ({ handler }) => {
   return (
-    <button className={styles.Button} onClick={handler}>
-      Load More
-    </button>
+    <Row justify='center'>
+      <Button onClick={handler} size='large'>
+        Load More
+      </Button>
+    </Row>
   );
 };
 

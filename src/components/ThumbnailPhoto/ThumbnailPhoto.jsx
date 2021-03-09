@@ -2,15 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './ThumbnailPhoto.module.css';
+import { Card, Typography } from 'antd';
+const { Meta } = Card;
 
 const ThumbnailPhoto = ({ url, title }) => {
   return (
-    <div className={styles.Card}>
-      <div className={styles.Image}>
-        <img src={url} alt={title} />
-      </div>
-      <p>{title}</p>
-    </div>
+    <Card
+      cover={<img src={url} alt={title} />}
+      hoverable
+      className={styles.Card}
+    >
+      <Meta title={<Typography className={styles.Title}>{title}</Typography>} />
+    </Card>
   );
 };
 
