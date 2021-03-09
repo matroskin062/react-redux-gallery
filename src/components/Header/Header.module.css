@@ -1,0 +1,17 @@
+.Header {
+  background: darkslateblue;
+  padding: 0 20px;
+}
+
+.Header a {
+  display: block;
+  text-align: center;
+  width: 100px;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.Header a:hover {
+  background: rgb(128, 116, 202);
+}
