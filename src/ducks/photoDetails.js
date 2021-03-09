@@ -1,15 +1,15 @@
 import PhotosAPI from '../API';
 
-const SET_PHOTO = 'react-redux-gallery/photo/SET_PHOTO';
-const SET_LOADING = 'react-redux-gallery/photo/SET_LOADING';
+const SET_LOADING = 'react-reudx-gallery/photoDetails/SET_LOADING';
+const SET_PHOTO = 'react-reudx-gallery/photoDetails/SET_PHOTO';
 
-const setPhoto = (photo) => ({
-  type: SET_PHOTO,
-  payload: photo,
+export const setLoading = (payloa) => ({
+  type: SET_LOADING,
 });
 
-export const setLoading = () => ({
-  type: SET_LOADING,
+export const setPhoto = (photo) => ({
+  type: SET_PHOTO,
+  payload: photo,
 });
 
 export const fetchPhoto = (id) => async (dispatch) => {
@@ -19,21 +19,22 @@ export const fetchPhoto = (id) => async (dispatch) => {
 };
 
 const initialState = {
-  photo: null,
   isLoading: false,
+  photo: null,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_PHOTO:
-      return {
-        photo: payload,
-        isLoading: false,
-      };
     case SET_LOADING:
       return {
         ...state,
         isLoading: true,
+      };
+    case SET_PHOTO:
+      return {
+        ...state,
+        photo: payload,
+        isLoading: false,
       };
     default:
       return state;
