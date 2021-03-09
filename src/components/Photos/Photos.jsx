@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { fetchPhotos, loadMore } from '../../ducks/photos';
-import ThumbnailPhoto from '../ThumbnailPhoto/ThumbnailPhoto';
+import PhotosList from '../PhotosList/PhotosList';
+import Spinner from '../Spinner/Spinner';
 import styles from './Photos.module.css';
 import photosSelector from './Photos.selector';
 
@@ -20,23 +20,19 @@ const Photos = () => {
     setPage(page + 1);
   };
 
-  const renderPhtosContainer = (
+  const renderPhotosList = (
     <>
-      <div className={styles.PhotosContainer}>
-        {photos.map((photo) => (
-          <Link to={`/photo/${photo.id}`} key={photo.id}>
-            <ThumbnailPhoto url={photo.thumbnailUrl} title={photo.title} />
-          </Link>
-        ))}
-      </div>
-      <button onClick={handleLoadMore}>Load more...</button>
+      <PhotosList photos={photos} />
+      <button className={styles.Button} onClick={handleLoadMore}>
+        Load more...
+      </button>
     </>
   );
 
   return (
-    <div className={styles.Wrapper}>
-      {isLoading && <h1>Loading...</h1>}
-      {!isLoading && photos && renderPhtosContainer}
+    <div>
+      {isLoading && <Spinner />}
+      {!isLoading && renderPhotosList}
     </div>
   );
 };

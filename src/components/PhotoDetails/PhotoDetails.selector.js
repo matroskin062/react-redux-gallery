@@ -1,20 +1,17 @@
 import { createSelector, createStructuredSelector } from 'reselect';
 
-const photosSelector = (state) => state.photosReducer;
+const photoSelector = (state) => state.photoReducer;
 
 const isLoadingSelector = createSelector(
-  photosSelector,
+  photoSelector,
   ({ isLoading }) => isLoading
 );
 
-const photosDataSelector = createSelector(
-  photosSelector,
-  ({ photos }) => photos
-);
+const photoDataSelector = createSelector(photoSelector, ({ photo }) => photo);
 
 const selector = createStructuredSelector({
   isLoading: isLoadingSelector,
-  photos: photosDataSelector,
+  photo: photoDataSelector,
 });
 
 export default selector;
