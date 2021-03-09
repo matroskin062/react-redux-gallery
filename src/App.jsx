@@ -1,18 +1,22 @@
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 import './App.css';
-import Album from './components/Album/Album';
+import AlbumPage from './components/AlbumPage/AlbumPage';
 import Header from './components/Header/Header';
-import PhotoDetails from './components/PhotoDetails/PhotoDetails';
-import Photos from './components/Photos/Photos';
+import NotFound from './components/NotFound/NotFound';
+import PhotoDetailsPage from './components/PhotoDetailsPage/PhotoDetailsPage';
+import PhotosPage from './components/PhotosPage/PhotosPage';
 
 function App() {
   return (
     <div className='App'>
       <Header />
       <div className='Layout'>
-        <Route exact path='/' component={Photos} />
-        <Route path='/photo/:id' component={PhotoDetails} />
-        <Route path='/album/:id' component={Album} />
+        <Switch>
+          <Route exact path='/' component={PhotosPage} />
+          <Route path='/photo/:id' component={PhotoDetailsPage} />
+          <Route path='/album/:id' component={AlbumPage} />
+          <Route path='*' component={NotFound} />
+        </Switch>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import Spinner from '../Spinner/Spinner';
 import styles from './Photos.module.css';
 import photosSelector from './Photos.selector';
 
-const Photos = () => {
+const PhotosPage = () => {
   const dispatch = useDispatch();
   const { photos, isLoading } = useSelector(photosSelector);
   const [page, setPage] = useState(2);
@@ -34,4 +34,4 @@ const Photos = () => {
   );
 };
 
-export default Photos;
+export default PhotosPage;

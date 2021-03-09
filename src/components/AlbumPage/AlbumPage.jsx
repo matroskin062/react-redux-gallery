@@ -10,7 +10,7 @@ import User from './User/User';
 import PhotosList from '../PhotosList/PhotosList';
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 
-const Album = () => {
+const AlbumPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [page, setPage] = useState(2);
@@ -44,4 +44,4 @@ const Album = () => {
   );
 };
 
-export default Album;
+export default AlbumPage;

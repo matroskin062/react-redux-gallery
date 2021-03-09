@@ -8,7 +8,7 @@ import Spinner from '../Spinner/Spinner';
 import styles from './PhotoDetails.module.css';
 import photoSelector from './PhotoDetails.selector';
 
-const PhotoDetails = () => {
+const PhotoDetailsPage = () => {
   const dispatch = useDispatch();
   const { photo, isLoading } = useSelector(photoSelector);
   const { id } = useParams();
@@ -38,4 +38,4 @@ const PhotoDetails = () => {
   );
 };
 
-export default PhotoDetails;
+export default PhotoDetailsPage;
