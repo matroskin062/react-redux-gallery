@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { fetchAlbumPhotos } from '../../ducks/album';
+import { fetchAlbumPhotos, fetchMoreAlbumPhotos } from '../../ducks/album';
 import { fetchUser } from '../../ducks/user';
 import Spinner from '../Spinner/Spinner';
 import albumSelector from './Album.selector';
 
 import User from './User/User';
 import PhotosList from '../PhotosList/PhotosList';
+import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 
 const Album = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [page, setPage] = useState(2);
   const { user, isUserLoading, photos, isAlbumLoading } = useSelector(
     albumSelector
   );
@@ -21,13 +23,23 @@ const Album = () => {
     dispatch(fetchAlbumPhotos(id));
   }, []);
 
+  const handleLoadMore = () => {
+    dispatch(fetchMoreAlbumPhotos(id, page));
+    setPage(page + 1);
+  };
+
   return (
     <div>
       {isAlbumLoading && isUserLoading && <Spinner />}
       {!isUserLoading && user && (
         <User username={user.username} name={user.name} email={user.email} />
       )}
-      {!isAlbumLoading && <PhotosList photos={photos} />}
+      {!isAlbumLoading && (
+        <>
+          <PhotosList photos={photos} />
+          <LoadMoreButton handler={handleLoadMore} />
+        </>
+      )}
     </div>
   );
 };

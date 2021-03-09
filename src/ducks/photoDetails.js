@@ -3,7 +3,7 @@ import PhotosAPI from '../API';
 const SET_LOADING = 'react-reudx-gallery/photoDetails/SET_LOADING';
 const SET_PHOTO = 'react-reudx-gallery/photoDetails/SET_PHOTO';
 
-export const setLoading = (payloa) => ({
+export const setLoading = () => ({
   type: SET_LOADING,
 });
 
@@ -20,7 +20,7 @@ export const fetchPhoto = (id) => async (dispatch) => {
 
 const initialState = {
   isLoading: false,
-  photo: null,
+  photo: undefined,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -33,8 +33,8 @@ const reducer = (state = initialState, { type, payload }) => {
     case SET_PHOTO:
       return {
         ...state,
-        photo: payload,
         isLoading: false,
+        photo: payload,
       };
     default:
       return state;

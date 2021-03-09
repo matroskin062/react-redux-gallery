@@ -35,8 +35,8 @@ const reducer = (state = initialState, { type, payload }) => {
 
       return {
         ...state,
-        user,
         isLoading: false,
+        user,
       };
     case SET_LOADING:
       return {

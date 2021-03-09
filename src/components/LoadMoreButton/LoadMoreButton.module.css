@@ -1,0 +1,16 @@
+.Button {
+  display: block;
+  margin: 0 auto;
+  background-color: transparent;
+  border: 1px solid royalblue;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  outline: none;
+  cursor: pointer;
+}
+
+.Button:hover {
+  background-color: royalblue;
+  color: white;
+}

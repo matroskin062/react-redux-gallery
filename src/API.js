@@ -5,27 +5,34 @@ const instance = axios.create({
 });
 
 const PhotosAPI = {
-  getPhotos: async (offset = 1) => {
+  getPhotos: async (page = 1) => {
     const { data } = await instance.get('photos/', {
       params: {
-        _page: offset,
+        _page: page,
         _limit: 6,
       },
     });
     return data;
   },
+
   getPhoto: async (id) => {
     const { data } = await instance.get(`photos/${id}?_expand=album`);
     return data;
   },
+
   getUser: async (id) => {
     const { data } = await instance.get(`albums/${id}?_expand=user`);
     return data.user;
   },
-  getAlbumPhotos: async (id) => {
-    const { data } = await instance.get(
-      `photos?albumId=${id}&_offset=0&_limit=6`
-    );
+
+  getAlbumPhotos: async (id, page = 1) => {
+    const { data } = await instance.get(`photos`, {
+      params: {
+        albumId: id,
+        _page: page,
+        _limit: 6,
+      },
+    });
     return data;
   },
 };

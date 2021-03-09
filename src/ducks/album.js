@@ -2,6 +2,7 @@ import PhotosAPI from '../API';
 
 const SET_LOADING = 'react-redux-gallery/album/SET_LOADING';
 const SET_PHOTOS = 'react-redux-gallery/album/SET_PHOTOS';
+const LOAD_MORE = 'react-redux-gallery/album/LOAD_MORE';
 
 export const setLoading = () => ({
   type: SET_LOADING,
@@ -12,10 +13,20 @@ export const setAlbumPhotos = (photos) => ({
   payload: photos,
 });
 
+export const setLoadedMore = (photos) => ({
+  type: LOAD_MORE,
+  payload: photos,
+});
+
 export const fetchAlbumPhotos = (id) => async (dispatch) => {
   dispatch(setLoading());
   const photos = await PhotosAPI.getAlbumPhotos(id);
   dispatch(setAlbumPhotos(photos));
+};
+
+export const fetchMoreAlbumPhotos = (id, page) => async (dispatch) => {
+  const photos = await PhotosAPI.getAlbumPhotos(id, page);
+  dispatch(setLoadedMore(photos));
 };
 
 const initialState = {
@@ -30,8 +41,13 @@ const reducer = (state = initialState, { type, payload }) => {
     case SET_PHOTOS:
       return {
         ...state,
-        photos: payload,
         isLoading: false,
+        photos: payload,
+      };
+    case LOAD_MORE:
+      return {
+        ...state,
+        photos: [...state.photos, ...payload],
       };
     default:
       return state;

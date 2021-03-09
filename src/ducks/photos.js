@@ -41,8 +41,8 @@ const reducer = (state = initialState, { type, payload }) => {
     case SET_PHOTOS:
       return {
         ...state,
-        photos: payload,
         isLoading: false,
+        photos: payload,
       };
     case LOAD_MORE:
       return {
