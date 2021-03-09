@@ -5,6 +5,7 @@ import PhotosList from '../PhotosList/PhotosList';
 import Spinner from '../Spinner/Spinner';
 import styles from './Photos.module.css';
 import photosSelector from './Photos.selector';
+import PropTypes from 'prop-types';
 
 const Photos = () => {
   const dispatch = useDispatch();
