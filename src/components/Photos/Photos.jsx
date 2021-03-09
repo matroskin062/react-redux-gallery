@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { fetchPhotos, loadMore } from '../../ducks/photos';
 import ThumbnailPhoto from '../ThumbnailPhoto/ThumbnailPhoto';
 import styles from './Photos.module.css';
+import photosSelector from './Photos.selector';
 
 const Photos = () => {
   const dispatch = useDispatch();
-  const { photos, isLoading } = useSelector((state) => state.photosReducer);
+  const { photos, isLoading } = useSelector(photosSelector);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
