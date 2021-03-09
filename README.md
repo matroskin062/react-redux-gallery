@@ -1,3 +1,18 @@
+# Requirements
+
+[x] Store all data in Redux
+[x] Asynchronys actions in action creators
+[x] Load more button on main page
+[ ] Load more button on album page
+[x] Routing with react-router-dom
+[x] prop-types
+
+### Pages
+
+[x] All photos
+[x] Photo Details
+[x] Album
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
