@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import photosSelector from './Photos.selector';
 import {
   clearPhotosListState,
   fetchPhotos,
   loadMore,
 } from '../../ducks/photos';
+
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 import Spinner from '../Spinner/Spinner';
-
 import ThumbnailPhoto from '../ThumbnailPhoto/ThumbnailPhoto';
-import photosSelector from './Photos.selector';
 
 import styles from './PhotosList.module.css';
 

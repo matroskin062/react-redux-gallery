@@ -1,10 +1,12 @@
 import { Route, Switch } from 'react-router';
-import './App.css';
+
 import AlbumPage from './components/AlbumPage/AlbumPage';
 import Header from './components/Header/Header';
 import NotFound from './components/NotFound/NotFound';
 import PhotoDetailsPage from './components/PhotoDetailsPage/PhotoDetailsPage';
 import PhotosPage from './components/PhotosPage/PhotosPage';
+
+import './App.css';
 
 function App() {
   return (

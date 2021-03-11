@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PageTitle from '../PageTitle/PageTitle';
 import PhotosList from '../PhotosList/PhotosList';
 

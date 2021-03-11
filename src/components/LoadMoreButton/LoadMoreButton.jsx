@@ -1,6 +1,8 @@
 import React from 'react';
-import Spinner from '../Spinner/Spinner';
 import PropTypes from 'prop-types';
+
+import Spinner from '../Spinner/Spinner';
+
 import styles from './LoadMoreButton.module.css';
 
 const LoadMoreButton = ({ handler, isLoading }) => {

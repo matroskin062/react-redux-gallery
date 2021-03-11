@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { clearUserState, fetchUser } from '../../ducks/user';
-import Spinner from '../Spinner/Spinner';
+
 import userSelector from './User.selector.js';
+
+import Spinner from '../Spinner/Spinner';
 import User from '../User/User';
 import PhotosList from '../PhotosList/PhotosList';
 import NotFound from '../NotFound/NotFound';
