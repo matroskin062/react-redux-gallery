@@ -52,7 +52,8 @@ const reducer = (state = initialState, { type, payload }) => {
       };
     case CLEAR:
       return {
-        isLoading: true,
+        isLoading: false,
+        error: false,
         photo: null,
       };
     case ERROR:

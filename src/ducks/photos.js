@@ -41,7 +41,7 @@ export const clearPhotosListState = () => ({
 });
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   photos: null,
   isLoadingMore: false,
 };
@@ -49,7 +49,10 @@ const initialState = {
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_LOADING:
-      return { ...state, isLoading: true };
+      return {
+        ...state,
+        isLoading: true,
+      };
     case SET_PHOTOS:
       return {
         ...state,
@@ -69,7 +72,7 @@ const reducer = (state = initialState, { type, payload }) => {
       };
     case CLEAR:
       return {
-        isLoading: true,
+        isLoading: false,
         isLoadingMore: false,
         photos: null,
       };

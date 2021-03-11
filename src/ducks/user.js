@@ -34,7 +34,7 @@ export const clearUserState = () => ({
 
 const initialState = {
   user: null,
-  isLoading: true,
+  isLoading: false,
   error: false,
 };
 
@@ -61,10 +61,12 @@ const reducer = (state = initialState, { type, payload }) => {
     case CLEAR:
       return {
         user: null,
-        isLoading: true,
+        isLoading: false,
+        error: false,
       };
     case ERROR:
       return {
+        user: null,
         isLoading: false,
         error: true,
       };

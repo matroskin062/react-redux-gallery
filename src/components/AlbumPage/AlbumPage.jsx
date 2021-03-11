@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { clearUserState, fetchUser } from '../../ducks/user';
 import Spinner from '../Spinner/Spinner';
 import userSelector from './User.selector.js';
-import User from './User/User';
+import User from '../User/User';
 import PhotosList from '../PhotosList/PhotosList';
 import NotFound from '../NotFound/NotFound';
 import PageTitle from '../PageTitle/PageTitle';

@@ -19,9 +19,9 @@ const Spinner = () => {
           r='33'
           fill='none'
           stroke='#483d8b'
-          stroke-dasharray='51.83627878423159 51.83627878423159'
-          stroke-linecap='round'
-          stroke-width='5'
+          strokeDasharray='51.83627878423159 51.83627878423159'
+          strokeLinecap='round'
+          strokeWidth='5'
         >
           <animateTransform
             attributeName='transform'
