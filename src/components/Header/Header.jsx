@@ -24,7 +24,7 @@ const Header = () => {
               height='15px'
               viewBox='0 0 44.952 44.952'
               style={{ enableBackground: 'new 0 0 15 15' }}
-              xmlSspace='preserve'
+              xmlSpace='preserve'
               fill='white'
               transform='rotate(180)'
             >
