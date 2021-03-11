@@ -6,11 +6,12 @@ import Spinner from '../Spinner/Spinner';
 import userSelector from './User.selector.js';
 import User from './User/User';
 import PhotosList from '../PhotosList/PhotosList';
+import NotFound from '../NotFound/NotFound';
 
 const AlbumPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { user, isLoading } = useSelector(userSelector);
+  const { user, isLoading, error } = useSelector(userSelector);
 
   useEffect(() => {
     dispatch(fetchUser(id));
@@ -20,6 +21,7 @@ const AlbumPage = () => {
   return (
     <div>
       {isLoading && <Spinner />}
+      {error && <NotFound />}
       {!isLoading && user && (
         <>
           <User username={user.username} name={user.name} email={user.email} />

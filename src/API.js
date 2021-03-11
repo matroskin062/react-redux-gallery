@@ -25,17 +25,6 @@ const PhotosAPI = {
     const { data } = await instance.get(`albums/${id}?_expand=user`);
     return data.user;
   },
-
-  getAlbumPhotos: async (id, page = 1) => {
-    const { data } = await instance.get(`photos`, {
-      params: {
-        albumId: id,
-        _page: page,
-        _limit: 6,
-      },
-    });
-    return data;
-  },
 };
 
 export default PhotosAPI;

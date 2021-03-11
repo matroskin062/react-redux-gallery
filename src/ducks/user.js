@@ -3,6 +3,7 @@ import PhotosAPI from '../API';
 const SET_USER = 'react-redux-gallery/user/SET_USER';
 const SET_LOADING = 'react-redux-gallery/user/SET_LOADING';
 const CLEAR = 'react-redux-gallery/user/CLEAR';
+const ERROR = 'react-redux-gallery/user/ERROR';
 
 export const setUser = (user) => ({
   type: SET_USER,
@@ -13,10 +14,18 @@ export const setLoading = () => ({
   type: SET_LOADING,
 });
 
+export const setError = () => ({
+  type: ERROR,
+});
+
 export const fetchUser = (id) => async (dispatch) => {
   dispatch(setLoading());
-  const user = await PhotosAPI.getUser(id);
-  dispatch(setUser(user));
+  try {
+    const user = await PhotosAPI.getUser(id);
+    dispatch(setUser(user));
+  } catch (e) {
+    dispatch(setError());
+  }
 };
 
 export const clearUserState = () => ({
@@ -26,6 +35,7 @@ export const clearUserState = () => ({
 const initialState = {
   user: null,
   isLoading: true,
+  error: false,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -52,6 +62,11 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         user: null,
         isLoading: true,
+      };
+    case ERROR:
+      return {
+        isLoading: false,
+        error: true,
       };
     default:
       return state;

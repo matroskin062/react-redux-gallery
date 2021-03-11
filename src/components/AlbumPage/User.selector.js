@@ -7,11 +7,14 @@ const isLoadingSelector = createSelector(
   ({ isLoading }) => isLoading
 );
 
+const isErrorSelector = createSelector(userSelector, ({ error }) => error);
+
 const userDataSelector = createSelector(userSelector, ({ user }) => user);
 
 const selector = createStructuredSelector({
   isLoading: isLoadingSelector,
   user: userDataSelector,
+  error: isErrorSelector,
 });
 
 export default selector;

@@ -3,11 +3,15 @@ import PhotosAPI from '../API';
 const SET_LOADING = 'react-reudx-gallery/photoDetails/SET_LOADING';
 const SET_PHOTO = 'react-reudx-gallery/photoDetails/SET_PHOTO';
 const CLEAR = 'react-reudx-gallery/photoDetails/CLEAR';
+const ERROR = 'react-reudx-gallery/photoDetails/ERROR';
 
 export const setLoading = () => ({
   type: SET_LOADING,
 });
 
+export const setError = () => ({
+  type: ERROR,
+});
 export const setPhoto = (photo) => ({
   type: SET_PHOTO,
   payload: photo,
@@ -15,8 +19,12 @@ export const setPhoto = (photo) => ({
 
 export const fetchPhoto = (id) => async (dispatch) => {
   dispatch(setLoading());
-  const photo = await PhotosAPI.getPhoto(id);
-  dispatch(setPhoto(photo));
+  try {
+    const photo = await PhotosAPI.getPhoto(id);
+    dispatch(setPhoto(photo));
+  } catch (e) {
+    dispatch(setError());
+  }
 };
 
 export const clearPhotoDetailsState = () => ({
@@ -26,6 +34,7 @@ export const clearPhotoDetailsState = () => ({
 const initialState = {
   isLoading: true,
   photo: null,
+  error: false,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -45,6 +54,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         isLoading: true,
         photo: null,
+      };
+    case ERROR:
+      return {
+        isLoading: false,
+        photo: null,
+        error: true,
       };
     default:
       return state;

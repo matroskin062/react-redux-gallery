@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { clearPhotoDetailsState, fetchPhoto } from '../../ducks/photoDetails';
+import NotFound from '../NotFound/NotFound';
 import Spinner from '../Spinner/Spinner';
 
 import styles from './PhotoDetails.module.css';
@@ -10,7 +11,7 @@ import photoSelector from './PhotoDetails.selector';
 
 const PhotoDetailsPage = () => {
   const dispatch = useDispatch();
-  const { photo, isLoading } = useSelector(photoSelector);
+  const { photo, isLoading, error } = useSelector(photoSelector);
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,23 +20,26 @@ const PhotoDetailsPage = () => {
   }, []);
 
   return (
-    <div className={styles.Details}>
+    <>
       {isLoading && <Spinner />}
-      {!isLoading && photo && (
-        <>
-          <div>
-            <img src={photo.url} alt={photo.title} />
-          </div>
-          <div>
-            <p>{photo.title}</p>
-            <p>
-              Album:{' '}
-              <Link to={`/album/${photo.album.id}`}>{photo.album.title}</Link>
-            </p>
-          </div>
-        </>
-      )}
-    </div>
+      {error && <NotFound />}
+      <div className={styles.Details}>
+        {!isLoading && photo && (
+          <>
+            <div>
+              <img src={photo.url} alt={photo.title} />
+            </div>
+            <div>
+              <p>{photo.title}</p>
+              <p>
+                Album:{' '}
+                <Link to={`/album/${photo.album.id}`}>{photo.album.title}</Link>
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
