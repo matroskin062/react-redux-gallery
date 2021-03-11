@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   clearPhotosListState,
@@ -46,6 +47,10 @@ const PhotosList = ({ albumId }) => {
       )}
     </>
   );
+};
+
+PhotosList.propTypes = {
+  albumId: PropTypes.string,
 };
 
 export default PhotosList;

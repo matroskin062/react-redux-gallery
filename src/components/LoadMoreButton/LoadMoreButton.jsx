@@ -1,6 +1,6 @@
 import React from 'react';
 import Spinner from '../Spinner/Spinner';
-
+import PropTypes from 'prop-types';
 import styles from './LoadMoreButton.module.css';
 
 const LoadMoreButton = ({ handler, isLoading }) => {
@@ -11,6 +11,11 @@ const LoadMoreButton = ({ handler, isLoading }) => {
   ) : (
     <Spinner />
   );
+};
+
+LoadMoreButton.propTypes = {
+  handler: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default LoadMoreButton;
