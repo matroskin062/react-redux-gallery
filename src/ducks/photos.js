@@ -2,10 +2,16 @@ import PhotosAPI from '../API';
 
 const SET_PHOTOS = 'react-redux-gallery/photos/SET_PHOTOS';
 const SET_LOADING = 'react-redux-gallery/photos/SET_LOADING';
+const SET_LOADING_MORE = 'react-redux-gallery/photos/SET_LOADING_MORE';
 const LOAD_MORE = 'react-redux-gallery/photos/LOAD_MORE';
+const CLEAR = 'react-redux-gallery/photos/CLEAR';
 
 export const setLoading = () => ({
   type: SET_LOADING,
+});
+
+export const setLoadingMore = () => ({
+  type: SET_LOADING_MORE,
 });
 
 export const setPhotos = (photos) => ({
@@ -18,20 +24,26 @@ export const setLoadedMore = (photos) => ({
   payload: photos,
 });
 
-export const fetchPhotos = () => async (dispatch) => {
+export const fetchPhotos = (albumId) => async (dispatch) => {
   dispatch(setLoading());
-  const photos = await PhotosAPI.getPhotos();
+  const photos = await PhotosAPI.getPhotos(1, albumId);
   dispatch(setPhotos(photos));
 };
 
-export const loadMore = (page) => async (dispatch) => {
-  const photos = await PhotosAPI.getPhotos(page);
+export const loadMore = (page, albumId) => async (dispatch) => {
+  dispatch(setLoadingMore());
+  const photos = await PhotosAPI.getPhotos(page, albumId);
   dispatch(setLoadedMore(photos));
 };
 
+export const clearPhotosListState = () => ({
+  type: CLEAR,
+});
+
 const initialState = {
-  isLoading: false,
+  isLoading: true,
   photos: null,
+  isLoadingMore: true,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -48,6 +60,18 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         photos: [...state.photos, ...payload],
+        isLoadingMore: false,
+      };
+    case SET_LOADING_MORE:
+      return {
+        ...state,
+        isLoadingMore: true,
+      };
+    case CLEAR:
+      return {
+        isLoading: true,
+        isLoadingMore: true,
+        photos: null,
       };
     default:
       return state;

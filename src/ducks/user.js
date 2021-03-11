@@ -2,6 +2,8 @@ import PhotosAPI from '../API';
 
 const SET_USER = 'react-redux-gallery/user/SET_USER';
 const SET_LOADING = 'react-redux-gallery/user/SET_LOADING';
+const CLEAR = 'react-redux-gallery/user/CLEAR';
+
 export const setUser = (user) => ({
   type: SET_USER,
   payload: user,
@@ -17,9 +19,13 @@ export const fetchUser = (id) => async (dispatch) => {
   dispatch(setUser(user));
 };
 
+export const clearUserState = () => ({
+  type: CLEAR,
+});
+
 const initialState = {
   user: null,
-  isLoading: false,
+  isLoading: true,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -32,7 +38,6 @@ const reducer = (state = initialState, { type, payload }) => {
         email,
         website,
       };
-
       return {
         ...state,
         isLoading: false,
@@ -41,6 +46,11 @@ const reducer = (state = initialState, { type, payload }) => {
     case SET_LOADING:
       return {
         ...state,
+        isLoading: true,
+      };
+    case CLEAR:
+      return {
+        user: null,
         isLoading: true,
       };
     default:

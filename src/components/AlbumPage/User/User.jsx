@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './User.module.css';
 
 const User = ({ username, name, email }) => {
+  useEffect(() => {
+    console.log('mounted');
+  }, []);
+
   return (
     <div className={styles.User}>
       <h3>{name}</h3>

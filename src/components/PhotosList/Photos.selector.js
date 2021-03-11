@@ -12,9 +12,14 @@ const photosDataSelector = createSelector(
   ({ photos }) => photos
 );
 
+const isLoadingMoreSelector = createSelector(
+  photosSelector,
+  ({ isLoadingMore }) => isLoadingMore
+);
 const selector = createStructuredSelector({
   isLoading: isLoadingSelector,
   photos: photosDataSelector,
+  isLoadingMore: isLoadingMoreSelector,
 });
 
 export default selector;

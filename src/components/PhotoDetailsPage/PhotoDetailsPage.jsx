@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { fetchPhoto } from '../../ducks/photoDetails';
+import { clearPhotoDetailsState, fetchPhoto } from '../../ducks/photoDetails';
 import Spinner from '../Spinner/Spinner';
 
 import styles from './PhotoDetails.module.css';
@@ -15,6 +15,7 @@ const PhotoDetailsPage = () => {
 
   useEffect(() => {
     dispatch(fetchPhoto(id));
+    return () => dispatch(clearPhotoDetailsState());
   }, []);
 
   return (

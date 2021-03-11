@@ -5,9 +5,10 @@ const instance = axios.create({
 });
 
 const PhotosAPI = {
-  getPhotos: async (page = 1) => {
+  getPhotos: async (page = 1, albumId) => {
     const { data } = await instance.get('photos/', {
       params: {
+        albumId,
         _page: page,
         _limit: 6,
       },
