@@ -6,7 +6,7 @@ import styles from './User.module.css';
 const User = ({ username, name, email }) => {
   return (
     <div className={styles.User}>
-      <h3>{name}</h3>
+      <h3>Author : {name}</h3>
       <p>Username: {username}</p>
       <p>
         Email: <a href={`mailto:${email}`}>{email}</a>

@@ -7,6 +7,7 @@ import userSelector from './User.selector.js';
 import User from './User/User';
 import PhotosList from '../PhotosList/PhotosList';
 import NotFound from '../NotFound/NotFound';
+import PageTitle from '../PageTitle/PageTitle';
 
 const AlbumPage = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const AlbumPage = () => {
       {error && <NotFound />}
       {!isLoading && user && (
         <>
+          <PageTitle>Album with id: {id}</PageTitle>
           <User username={user.username} name={user.name} email={user.email} />
           <PhotosList albumId={id} />
         </>

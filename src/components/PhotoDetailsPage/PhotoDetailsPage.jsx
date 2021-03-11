@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { clearPhotoDetailsState, fetchPhoto } from '../../ducks/photoDetails';
 import NotFound from '../NotFound/NotFound';
+import PageTitle from '../PageTitle/PageTitle';
 import Spinner from '../Spinner/Spinner';
 
 import styles from './PhotoDetails.module.css';
@@ -23,9 +24,10 @@ const PhotoDetailsPage = () => {
     <>
       {isLoading && <Spinner />}
       {error && <NotFound />}
-      <div className={styles.Details}>
-        {!isLoading && photo && (
-          <>
+      {!isLoading && photo && (
+        <>
+          <PageTitle>Photo with id: {id}</PageTitle>
+          <div className={styles.Details}>
             <div>
               <img src={photo.url} alt={photo.title} />
             </div>
@@ -36,9 +38,9 @@ const PhotoDetailsPage = () => {
                 <Link to={`/album/${photo.album.id}`}>{photo.album.title}</Link>
               </p>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
