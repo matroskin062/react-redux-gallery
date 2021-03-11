@@ -3,7 +3,7 @@
 - [x] Store all data in Redux
 - [x] Asynchronys actions in action creators
 - [x] Load more button on main page
-- [ ] Load more button on album page
+- [x] Load more button on album page
 - [x] Routing with react-router-dom
 - [x] prop-types
 
