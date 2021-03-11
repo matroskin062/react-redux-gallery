@@ -1,17 +1,31 @@
 .Header {
   background: darkslateblue;
   padding: 0 20px;
+  display: flex;
+  align-items: center;
 }
 
 .Header a {
   display: block;
+}
+
+.Header a,
+.GoBack {
   text-align: center;
-  width: 100px;
+  min-width: 100px;
   color: white;
   text-decoration: none;
   padding: 10px;
+  cursor: pointer;
 }
 
-.Header a:hover {
+.Header a:hover,
+.GoBack:hover {
   background: rgb(128, 116, 202);
+}
+
+.GoBack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
