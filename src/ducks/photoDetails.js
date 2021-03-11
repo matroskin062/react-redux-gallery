@@ -38,8 +38,8 @@ const reducer = (state = initialState, { type, payload }) => {
     case SET_PHOTO:
       return {
         ...state,
-        isLoading: false,
         photo: payload,
+        isLoading: false,
       };
     case CLEAR:
       return {
